@@ -1,9 +1,97 @@
-tr,td{
-    border:1px;
-    border-style: solid;
+/* General styles */
+body {
+    font-family: 'Poppins', sans-serif; /*font we use from google*/
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f9;
 }
-td{
+
+/* Title styling */
+h1 {
+    color: #333;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Header */
+.header {
+    width: 100%;
+    background-color: #007bff;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Buttons */
+button {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #003f8a;
+}
+
+/* Select (Dropdown) styling */
+select {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Grid Table */
+table {
+    margin-top: 80px; /* Add this margin to shift grid down so header doesn't cover it*/
+    border-collapse: collapse;
+}
+
+td {
     height: 50px;
     width: 50px;
+    border: 1px solid #ddd;
     background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button controls at the top of the screen */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* initial hides dropdown for small screens */
+#collapsedControls {
+    display: none;
+}
+
+/* small screens */
+@media (max-width: 600px) {
+    /* on small screens, hide the buttons */
+    #gridButtons {
+        display: none;
+    }
+
+    /* and then show the dropdown with the actions in it */
+    #collapsedControls {
+        display: inline-block;
+    }
 }

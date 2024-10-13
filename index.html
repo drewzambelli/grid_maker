@@ -3,40 +3,66 @@
 <head>
     <title>Grid Maker</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!--good looking font-->
 </head>
 <body>
-    <!-- Menu Buttons -->
-    <button onclick="addR()">Add Row</button>
-    <button onclick="addC()">Add Col</button>
-    <button onclick="removeR()">Remove Row</button>
-    <button onclick="removeC()">Remove Col</button>
-    <button onclick="fillU()">Fill All Uncolored</button>
-    <button onclick="fillAll()">Fill All</button>
-    <button onclick="clearAll()">Clear</button>
-    <select onchange="selectColor()" id="selectedColorId">
-        <option value="SELECT">SELECT</option>
-        <option value="Red">Red</option>
-        <option value="Blue">Blue</option>
-        <option value="Green">Green</option>
-        <option value="Yellow">Yellow</option>
-    </select>
-    <!-- Grid Table -->
+    <div class="header">
+        <div class="controls">
+            <!-- Buttons -->
+            <div id="gridButtons">
+                <button onclick="addR()">Add Row</button>
+                <button onclick="addC()">Add Col</button>
+                <button onclick="removeR()">Remove Row</button>
+                <button onclick="removeC()">Remove Col</button>
+                <button onclick="fillU()">Fill Uncolored</button>
+                <button onclick="fillAll()">Fill All</button>
+                <button onclick="clearAll()">Clear</button>
+            </div>
+
+            <!-- Dropdown menu for the buttons if user makes the screen small-->
+             <!-- Did it this way as a work-around to a problem I was having aligning the buttons
+              in a different div next to the color dropdown menu -->
+            <select id="collapsedControls" onchange="handleMenuAction(this.value)">
+                <option value="">SELECT</option>
+                <option value="addR">Add Row</option>
+                <option value="addC">Add Col</option>
+                <option value="removeR">Remove Row</option>
+                <option value="removeC">Remove Col</option>
+                <option value="fillU">Fill Uncolored</option>
+                <option value="fillAll">Fill All</option>
+                <option value="clearAll">Clear</option>
+            </select>
+
+            <!-- Dropdown for colors -->
+            <select onchange="selectColor()" id="selectedColorId">
+                <option value="SELECT">SELECT</option>
+                <option value="white">White</option>
+                <option value="Red">Red</option>
+                <option value="Blue">Blue</option>
+                <option value="Green">Green</option>
+                <option value="Yellow">Yellow</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Grid -->
     <table id="grid">
-        <p>Below is an example of table (grid) template for illustration purpose. 
-            You need to remove this code (tr and td elements) in your assignment
-            so that you will have an empty table as the starting point.</p>
-        <tr>
-            <td onclick="alert('Clicked a table cell');"></td>
-            <td onclick="alert('Clicked a table cell');"></td>
-            <td onclick="alert('Clicked a table cell');"></td>
-        </tr>
-        <tr>
-            <td onclick="alert('Clicked a table cell');"></td>
-            <td onclick="alert('Clicked a table cell');"></td>
-            <td onclick="alert('Clicked a table cell');"></td>
-        </tr>
+        <tbody></tbody>
     </table>
-    <!-- Script -->
+
     <script src="script.js"></script>
+
+    <script>
+        // These handle the 'action' clicks in the dropdown menu for small screens
+        function handleMenuAction(action) {
+            if (action === "addR") addR();
+            if (action === "addC") addC();
+            if (action === "removeR") removeR();
+            if (action === "removeC") removeC();
+            if (action === "fillU") fillU();
+            if (action === "fillAll") fillAll();
+            if (action === "clearAll") clearAll();
+        }
+    </script>
 </body>
 </html>
